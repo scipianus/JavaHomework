@@ -22,12 +22,22 @@ public class GameOfLife {
     private static Worker[] workers;
 
     public static void main(String[] args) {
-        n = m = null;
-        do {
-            n = new Integer(JOptionPane.showInputDialog("Number of lines:"));
-            m = new Integer(JOptionPane.showInputDialog("Number of columns:"));
+        while(n == null) {
+            try {
+                n = new Integer(JOptionPane.showInputDialog("Number of lines:"));
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
         }
-        while (n == null || m == null);
+        while(m == null) {
+            try {
+                m = new Integer(JOptionPane.showInputDialog("Number of columns:"));
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         nrWorkers = Math.min(10, n * m);
 

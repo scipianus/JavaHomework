@@ -35,7 +35,7 @@ public class Game {
         }
     }
 
-    public synchronized int countNeighbours(int x, int y) {
+    public int countNeighbours(int x, int y) {
         int neighbours = 0;
         for (int i = x - 1; i <= x + 1; ++i) {
             for (int j = y - 1; j <= y + 1; ++j) {
@@ -50,29 +50,29 @@ public class Game {
         return neighbours;
     }
 
-    public synchronized boolean isAlive(int i, int j) {
+    public boolean isAlive(int i, int j) {
         return matrix[currentFrame][i][j];
     }
 
-    public synchronized void kill(int i, int j) {
+    public void kill(int i, int j) {
         matrix[nextFrame][i][j] = false;
     }
 
-    public synchronized void create(int i, int j) {
+    public void create(int i, int j) {
         matrix[nextFrame][i][j] = true;
     }
 
-    public synchronized void drawCell(int i, int j) {
+    public void drawCell(int i, int j) {
         gameGrid.updateCell(i, j, matrix[currentFrame][i][j]);
         matrix[nextFrame][i][j] = matrix[currentFrame][i][j];
     }
 
-    public synchronized void startedFramePainting()
+    public void startedFramePainting()
     {
         workingPainters.incrementAndGet();
     }
 
-    public synchronized void finishedFramePainting()
+    public void finishedFramePainting()
     {
         int value = workingPainters.decrementAndGet();
         if(value == 0)
